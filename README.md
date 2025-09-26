@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Customizable SVG Icon generator
 
-## Getting Started
+A simple web-based **Customizable SVG Icon generator** build with **next.js**. It allows user to pick a predefined icon, change its color, and size. After that download or copy the generated SVG.
 
-First, run the development server:
+
+## Feature 
+- Choose from predefined set of icons
+- Change icon color dynamically
+- Select icon size from 32px - 256px
+- Live preview generated SVG
+- Download generated SVG
+- Copy directly generated SVG to clipboad
+
+
+## Setup
+
+### 1. Clone this repository 
+### 2.  Install dependencies 
+
+```bash
+npm install
+# or 
+yarn install 
+```
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
+# or 
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Your app will be avaible at:
+[http://localhost:3000/](http://localhost:3000/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Select an icon from dropdown.
+2. Pick a clor with the color picker.
+3. Choose a size from the dropdown.
+4. preview updates instanly in the preview box.
+5. Click download SVG to download or Copy SVG to copy 
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Adding Your Own SVG Icon 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can add custom SVGs icon by editing **`src/utils/icons.ts`**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Place your svg inside `public/icons/`
+2. Open `src/utils/icons.ts` and add it to the map:
 
-## Deploy on Vercel
+```ts
+export const ICONS = ['Download','Camera', 'Car', 'Custom'] as const // Your custom icon
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+export type IconKey = typeof ICONS[number]
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+export const ICON_PATHS: Record<IconKey, string> = {
+    Download: '/icons/download.svg',
+    Camera: '/icons/camera.svg',
+    Car: '/icons/car.svg',
+    Custom: '/icons/custom.svg' // Your custom icon
+}
+
+```
+
