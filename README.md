@@ -15,6 +15,11 @@ A simple web-based **Customizable SVG Icon generator** build with **next.js**. I
 ## Setup
 
 ### 1. Clone this repository 
+
+```bash
+git clone https://github.com/iqbalai55/svg-icon-generator.git
+```
+
 ### 2.  Install dependencies 
 
 ```bash
